@@ -14,7 +14,7 @@ function setup() {
 }
 
 function draw() {
-  background(255, 0, 0, 0); // Changed to CMYK; "ghosts" bubbles and leaves a trail behind in black
+  background(255, 0, 0, 0); // Changed to RGBA; "ghosts" bubbles and leaves a trail behind in black
 
   for (var i = 1; i < bubbles.length; i++) {
     var bubble = bubbles[i];
@@ -23,13 +23,17 @@ function draw() {
       if (mouseIsPressed) {
         bubbles.splice(i, 1); // deletes one bub at a time
       }
-      fill(100, 100, 255, 255); // color changed to light blue
+      stroke(0, 0, 255, 100);
+      strokeWeight(1);
+      fill(100, 100, 255, 255); // colors changed to a light blue fill with dark blue stroke
     } else {
-      fill(0, 100, 100, 255); // color changed to dark , like the San Jose Sharks
+      stroke(255, 100, 0, 200)
+      strokeWeight(2);
+      fill(0, 100, 100, 255); // colors changed to a teal fill with orange stroke
     }
 
     ellipse(bubble.x, bubble.y, bubble.radius * 2);
-    bubble.x += random(-1, 1);
-    bubble.y += random(-1, 1);
+    bubble.x += random(-2,2);
+    bubble.y += random(-2, 2);
   }
 }
